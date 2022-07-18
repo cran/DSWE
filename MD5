@@ -1,4 +1,4 @@
-befeb3fda50c79aa820b40b832d3236d *DESCRIPTION
+575050485fcb016c760f11a110c63211 *DESCRIPTION
 81a1d778bba77826c00e6dddd9f38892 *LICENSE
 d23390329511ebee9c4e3385e643fc87 *NAMESPACE
 6b70f219f34e9e764f26093dc568ab89 *R/AMK.R
@@ -19,14 +19,14 @@ dcb036cb4cc9ea0a113000dc4100cccf *R/RcppExports.R
 c6db6418f7b99ae3302063427c06e314 *R/SvmPCFit.R
 ed9e2191d59e2c71be4abd93f8e9e5f8 *R/data1.R
 a14c4dbeafb7a5dc73130d4372cbd292 *R/data2.R
-df249145c7e6571862d96ca001c98c96 *R/deltaEnergy.R
+31185bdaf9b1aebb8140bdc1ed64307f *R/deltaEnergy.R
 e55e09efbe7ad7bb76d9bf933599b63d *R/funGP.R
 e12c565e40e6292619b42c706807fabe *R/funGPSubroutines.R
-7662edbe087ef67e2872bb29b67c30d2 *R/imptPower.R
+22356feb8d2592e29a9a35c1f731df83 *R/imptPower.R
 1f8e280d1c4d3324f3e8f9d4851e1126 *R/syncSize.R
 576c2d4fb6978dafff0d51a12b9b4096 *R/tempGP.R
 ebfb35b3287d5933c81323ff50ac1a6e *R/tempGPSubroutines.R
-c57cd248763f3f23c45efa335c0e10fa *build/partial.rdb
+55bb3adb5bec24fca4207e40bc3acd6c *build/partial.rdb
 293fcf5c2299e63b105cd06d13deaaa5 *data/data1.rda
 61e28230852ab07042ddc00f1729c8e3 *data/data2.rda
 4015d87d7bbf0729304116b76e6f58f5 *man/AMK.Rd
@@ -41,7 +41,7 @@ aba5caf0baee1e8004e7d3864afe7f3f *man/SplinePCFit.Rd
 8d3ba6d24b77110db35e3107933ae417 *man/SvmPCFit.Rd
 42687065698f4ce95ec3165f187aa04d *man/data1.Rd
 43e6e9cf923f117b98ecf8ee4e3a981f *man/data2.Rd
-d1c89730868f45c49de328a9c722b430 *man/deltaEnergy.Rd
+1db3e4c3e8164066fd3743f48aa1b198 *man/deltaEnergy.Rd
 e1037d0699da7c8f473fc2bf852d9b4a *man/funGP.Rd
 9d54bf500d1c046965ae18f145e1fb7c *man/imptPower.Rd
 8f7f9f3f7ce0c2470e2f99139f752b1c *man/predict.tempGP.Rd

@@ -1,6 +1,6 @@
 Package: DSWE
 Title: Data Science for Wind Energy
-Version: 1.6.0
+Version: 1.6.1
 Authors@R: c(
     person(given = "Nitesh", family = "Kumar", role = c("aut"), email = "nitesh.kumar@tamu.edu"),
     person(given = "Abhinav", family = "Prakash", role = c("aut"), email = "abhinavp@tamu.edu"),
@@ -33,7 +33,7 @@ Imports: Rcpp (>= 1.0.4.6) , matrixStats (>= 0.55.0) , FNN (>= 1.1.3) ,
         0.3-1.4), gss (>= 2.2-2), e1071 (>= 1.7-3), stats (>= 3.5.0),
         dplyr (>= 1.0.9)
 NeedsCompilation: yes
-Packaged: 2022-07-07 15:44:41 UTC; abhinavprakash
+Packaged: 2022-07-18 03:19:26 UTC; abhinavprakash
 Author: Nitesh Kumar [aut],
   Abhinav Prakash [aut],
   Yu Ding [aut, cre],
@@ -41,4 +41,4 @@ Author: Nitesh Kumar [aut],
   Effi Latiffianti [ctb, cph]
 Maintainer: Yu Ding <yuding@tamu.edu>
 Repository: CRAN
-Date/Publication: 2022-07-07 22:20:12 UTC
+Date/Publication: 2022-07-18 12:30:06 UTC
