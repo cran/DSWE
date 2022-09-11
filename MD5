@@ -1,9 +1,9 @@
-575050485fcb016c760f11a110c63211 *DESCRIPTION
+fc2187c15923a4a4fd8882170dcd4177 *DESCRIPTION
 81a1d778bba77826c00e6dddd9f38892 *LICENSE
 d23390329511ebee9c4e3385e643fc87 *NAMESPACE
 6b70f219f34e9e764f26093dc568ab89 *R/AMK.R
-145981cac91d6b70fbfc0f33d9b74d41 *R/AMKGapSubroutines.R
-f2bb8e1627428006d893bcaf046242da *R/AMKSubroutines.R
+e0fc66239fa4cb380367b13205ca296e *R/AMKGapSubroutines.R
+feccd4f3edd001d04a47691ece11fb14 *R/AMKSubroutines.R
 f816fb92f8645accef69cac29591b9d7 *R/BayesTreePCFit.R
 24a8a3bf1bda74c128471b558309f71f *R/ComparePCurve.R
 a6c9e2814b0a269d48265fb86e435df4 *R/ComparePCurveSubroutines.R
@@ -24,9 +24,9 @@ e55e09efbe7ad7bb76d9bf933599b63d *R/funGP.R
 e12c565e40e6292619b42c706807fabe *R/funGPSubroutines.R
 22356feb8d2592e29a9a35c1f731df83 *R/imptPower.R
 1f8e280d1c4d3324f3e8f9d4851e1126 *R/syncSize.R
-576c2d4fb6978dafff0d51a12b9b4096 *R/tempGP.R
-ebfb35b3287d5933c81323ff50ac1a6e *R/tempGPSubroutines.R
-55bb3adb5bec24fca4207e40bc3acd6c *build/partial.rdb
+1d64d4f960c36f69f420ec93e7604a3a *R/tempGP.R
+27b0a8e31b54c292cdc8617e9e7e95ae *R/tempGPSubroutines.R
+722769249904a23cb5b4ce566ddf3464 *build/partial.rdb
 293fcf5c2299e63b105cd06d13deaaa5 *data/data1.rda
 61e28230852ab07042ddc00f1729c8e3 *data/data2.rda
 4015d87d7bbf0729304116b76e6f58f5 *man/AMK.Rd
@@ -49,7 +49,7 @@ e1037d0699da7c8f473fc2bf852d9b4a *man/funGP.Rd
 7d94cebdab321ed68cf0aabe05a41446 *man/tempGP.Rd
 ae16fb1eb2cc02ce777e1e8ed2d0c1b8 *man/updateData.Rd
 4dbc7ac212423feb716e229406c895a3 *man/updateData.tempGP.Rd
-1694985fbc0be1cd8a3a6a861de42edf *src/GPMethods.cpp
+0d6a3958eb1eb86dc0be3e6f759c5ba2 *src/GPMethods.cpp
 64e97dcde0b2a1826a3c966332492ec6 *src/Makevars
 07d77071e1d0a42ab0e75fc207b35de2 *src/Makevars.win
 d80272e5fdd4084a737caffe90d48b2a *src/MatchInternal2.cpp
