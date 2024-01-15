@@ -1,10 +1,9 @@
-b3a2523897289630328bafe6206bbfe2 *DESCRIPTION
+a5885619e100e9c3ac6c11643dbdc65a *DESCRIPTION
 81a1d778bba77826c00e6dddd9f38892 *LICENSE
-5840cb27d6fb5115d69fdddc75ddd491 *NAMESPACE
+cbafc28a467da7b7a49db521a8b8fc32 *NAMESPACE
 6b70f219f34e9e764f26093dc568ab89 *R/AMK.R
 e0fc66239fa4cb380367b13205ca296e *R/AMKGapSubroutines.R
 feccd4f3edd001d04a47691ece11fb14 *R/AMKSubroutines.R
-836afad326b94e4451ab53416a7d5597 *R/BayesTreePCFit.R
 24a8a3bf1bda74c128471b558309f71f *R/ComparePCurve.R
 a6c9e2814b0a269d48265fb86e435df4 *R/ComparePCurveSubroutines.R
 eb79133823fb809408442015a2321aec *R/ComputeWeightedDifference.R
@@ -30,7 +29,6 @@ a14c4dbeafb7a5dc73130d4372cbd292 *R/data2.R
 293fcf5c2299e63b105cd06d13deaaa5 *data/data1.rda
 61e28230852ab07042ddc00f1729c8e3 *data/data2.rda
 4015d87d7bbf0729304116b76e6f58f5 *man/AMK.Rd
-f816823e5ae0aefdc1a9534152c935d9 *man/BayesTreePCFit.Rd
 641167d6163c909521044fcfc33e6f07 *man/ComparePCurve.Rd
 cbafbfa28ee0537d23e5ed06ba5a2d53 *man/ComputeWeightedDifference.Rd
 598b12063cf7258e14bd725c555da0bc *man/CovMatch.Rd
