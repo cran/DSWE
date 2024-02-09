@@ -1,6 +1,6 @@
 # MIT License
 # 
-# Copyright (c) 2020 Nitesh Kumar, Abhinav Prakash, and Yu Ding
+# Copyright (c) 2024 Ahmadreza Chokhachian, and Yu Ding
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,15 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-#' @title SVM based power curve modelling
+#' @title xgboost based power curve modelling
 #'
 #' @param trainX a matrix or dataframe to be used in modelling
 #' @param trainY a numeric or vector as a target
 #' @param testX a matrix or dataframe, to be used in computing the predictions
-#' @param kernel default is 'radial' else can be 'linear', 'polynomial' and 'sigmoid'
+#' @param max.depth  maximum depth of a tree
+#' @param eta learning rate
+#' @param nthread This parameter specifies the number of CPU threads that XGBoost
+#' @param nrounds  number of boosting rounds or trees to build
 #' @return a vector or numeric predictions on user provided test data
 #'
-#' @importFrom e1071 svm
+#' @importFrom xgboost xgboost
 #' @examples 
 #' 
 #' data = data1
@@ -36,11 +39,12 @@
 #' trainY = data[c(1:100),7]
 #' testX = as.matrix(data[c(101:110),2])
 #' 
-#' Svm_prediction = SvmPCFit(trainX, trainY, testX)
+#' Xgb_prediction = XgbPCFit(trainX, trainY, testX)
 #' 
+#' @references Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System." Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, 785-794. \doi{10.1145/2939672.2939785}.
 #' @export
 
-SvmPCFit = function(trainX, trainY, testX, kernel = 'radial'){
+XgbPCFit = function(trainX, trainY, testX, max.depth = 8, eta = 0.25, nthread = 2, nrounds = 5){
   
   if (!is.matrix(trainX) && !is.data.frame(trainX)) {
     
@@ -70,19 +74,25 @@ SvmPCFit = function(trainX, trainY, testX, kernel = 'radial'){
     
     stop("testX and trainX must have same number of columns")
   }
-  
-  if(!is.character(kernel)){
-    
-    stop("kernel can only take string input")
-    
-  }else if(kernel != 'radial' && kernel != 'linear' && kernel != 'polynomial' && kernel != 'sigmoid'){
-    
-    stop("kernel can only take followings as input: linear, radial, polynomial and sigmoid")
-    
+
+  if (!is.numeric(max.depth) || max.depth <= 0) {
+    stop("max.depth must be a positive numeric value.")
   }
   
-  modelFit = svm(x = trainX, y = trainY, kernel = kernel)
+  if (!is.numeric(eta) || eta <= 0 || eta > 1) {
+    stop("eta must be a numeric value between 0 and 1.")
+  }
   
+  if (!is.numeric(nthread) || nthread <= 0 || nthread != round(nthread)) {
+    stop("nthread must be a positive integer.")
+  }
+  
+  if (!is.numeric(nrounds) || nrounds <= 0 || nrounds != round(nrounds)) {
+    stop("nrounds must be a positive integer.")
+  }
+
+  modelFit = xgboost::xgboost(data = trainX, label = trainY, max.depth = max.depth, eta = eta, nthread = nthread, nrounds = nrounds, verbose=FALSE)
+
   testPred = predict(modelFit, testX)
   
   return(testPred)
