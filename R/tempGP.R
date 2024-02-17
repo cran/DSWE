@@ -79,6 +79,7 @@
 #' 
 #' @references Prakash, A., Tuo, R., & Ding, Y. (2022). "The temporal overfitting problem with applications in wind power curve modeling." Technometrics. \doi{10.1080/00401706.2022.2069158}.
 #' @references Katzfuss, M., & Guinness, J. (2021). "A General Framework for Vecchia Approximations of Gaussian Processes." Statistical Science. \doi{10.1214/19-STS755}.
+#' @references Guinness, J. (2018). "Permutation and Grouping Methods for Sharpening Gaussian Process Approximations." Technometrics. \doi{10.1080/00401706.2018.1437476}.
 #' @export
 #' 
 

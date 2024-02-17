@@ -84,6 +84,8 @@ A Gaussian process based power curve model which explicitly models the temporal 
 Prakash, A., Tuo, R., & Ding, Y. (2022). "The temporal overfitting problem with applications in wind power curve modeling." Technometrics. \doi{10.1080/00401706.2022.2069158}.
 
 Katzfuss, M., & Guinness, J. (2021). "A General Framework for Vecchia Approximations of Gaussian Processes." Statistical Science. \doi{10.1214/19-STS755}.
+
+Guinness, J. (2018). "Permutation and Grouping Methods for Sharpening Gaussian Process Approximations." Technometrics. \doi{10.1080/00401706.2018.1437476}.
 }
 \seealso{
 \code{\link{predict.tempGP}} for computing predictions and \code{\link{updateData.tempGP}} for updating data in a tempGP object.

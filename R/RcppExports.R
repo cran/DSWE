@@ -33,3 +33,19 @@ matchcov <- function(ref, obj, thres, circ_pos, flag) {
     .Call(`_DSWE_matchcov`, ref, obj, thres, circ_pos, flag)
 }
 
+matern15_scaledim <- function(covparms, locs) {
+    .Call(`_DSWE_matern15_scaledim`, covparms, locs)
+}
+
+d_matern15_scaledim <- function(covparms, locs) {
+    .Call(`_DSWE_d_matern15_scaledim`, covparms, locs)
+}
+
+vecchia_grouped_profbeta_loglik_grad_info <- function(covparms, covfun_name, y, X, locs, NNlist) {
+    .Call(`_DSWE_vecchia_grouped_profbeta_loglik_grad_info`, covparms, covfun_name, y, X, locs, NNlist)
+}
+
+MaxMincpp <- function(locations) {
+    .Call(`_DSWE_MaxMincpp`, locations)
+}
+

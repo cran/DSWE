@@ -123,6 +123,57 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// matern15_scaledim
+arma::mat matern15_scaledim(arma::vec covparms, arma::mat locs);
+RcppExport SEXP _DSWE_matern15_scaledim(SEXP covparmsSEXP, SEXP locsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type covparms(covparmsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type locs(locsSEXP);
+    rcpp_result_gen = Rcpp::wrap(matern15_scaledim(covparms, locs));
+    return rcpp_result_gen;
+END_RCPP
+}
+// d_matern15_scaledim
+arma::cube d_matern15_scaledim(arma::vec covparms, arma::mat locs);
+RcppExport SEXP _DSWE_d_matern15_scaledim(SEXP covparmsSEXP, SEXP locsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< arma::vec >::type covparms(covparmsSEXP);
+    Rcpp::traits::input_parameter< arma::mat >::type locs(locsSEXP);
+    rcpp_result_gen = Rcpp::wrap(d_matern15_scaledim(covparms, locs));
+    return rcpp_result_gen;
+END_RCPP
+}
+// vecchia_grouped_profbeta_loglik_grad_info
+List vecchia_grouped_profbeta_loglik_grad_info(NumericVector covparms, StringVector covfun_name, NumericVector y, NumericMatrix X, const NumericMatrix locs, List NNlist);
+RcppExport SEXP _DSWE_vecchia_grouped_profbeta_loglik_grad_info(SEXP covparmsSEXP, SEXP covfun_nameSEXP, SEXP ySEXP, SEXP XSEXP, SEXP locsSEXP, SEXP NNlistSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericVector >::type covparms(covparmsSEXP);
+    Rcpp::traits::input_parameter< StringVector >::type covfun_name(covfun_nameSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< NumericMatrix >::type X(XSEXP);
+    Rcpp::traits::input_parameter< const NumericMatrix >::type locs(locsSEXP);
+    Rcpp::traits::input_parameter< List >::type NNlist(NNlistSEXP);
+    rcpp_result_gen = Rcpp::wrap(vecchia_grouped_profbeta_loglik_grad_info(covparms, covfun_name, y, X, locs, NNlist));
+    return rcpp_result_gen;
+END_RCPP
+}
+// MaxMincpp
+IntegerVector MaxMincpp(NumericMatrix locations);
+RcppExport SEXP _DSWE_MaxMincpp(SEXP locationsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< NumericMatrix >::type locations(locationsSEXP);
+    rcpp_result_gen = Rcpp::wrap(MaxMincpp(locations));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_DSWE_computeWeightedY", (DL_FUNC) &_DSWE_computeWeightedY, 3},
@@ -133,6 +184,10 @@ static const R_CallMethodDef CallEntries[] = {
     {"_DSWE_computeDiffCov_", (DL_FUNC) &_DSWE_computeDiffCov_, 9},
     {"_DSWE_computeConfBand_", (DL_FUNC) &_DSWE_computeConfBand_, 2},
     {"_DSWE_matchcov", (DL_FUNC) &_DSWE_matchcov, 5},
+    {"_DSWE_matern15_scaledim", (DL_FUNC) &_DSWE_matern15_scaledim, 2},
+    {"_DSWE_d_matern15_scaledim", (DL_FUNC) &_DSWE_d_matern15_scaledim, 2},
+    {"_DSWE_vecchia_grouped_profbeta_loglik_grad_info", (DL_FUNC) &_DSWE_vecchia_grouped_profbeta_loglik_grad_info, 6},
+    {"_DSWE_MaxMincpp", (DL_FUNC) &_DSWE_MaxMincpp, 1},
     {NULL, NULL, 0}
 };
 

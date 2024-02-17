@@ -46,8 +46,6 @@
 # SOFTWARE.
 
 #' @useDynLib DSWE, .registration = TRUE
-#' @importFrom GpGp matern15_scaledim find_ordered_nn get_linkfun group_obs get_penalty vecchia_grouped_profbeta_loglik_grad_info vecchia_profbeta_loglik_grad_info fisher_scoring find_ordered_nn_brute
-#' @importFrom GPvecchia order_maxmin_exact
 
 
 fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu=1.5,nug=NULL,scale='none',
@@ -148,12 +146,12 @@ fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu
       X.ord=list()
       for(i in 1:T){
         ## order and condition based on current params
-        ord=GPvecchia::order_maxmin_exact(t(t(loc[[i]])*scales))
+        ord=order_maxmin_exact(t(t(loc[[i]])*scales))
         loc.ord[[i]]=loc[[i]][ord,,drop=FALSE]
         Y.ord[[i]]=Y[[i]][ord]
         X.ord[[i]]=as.matrix(X[[i]][ord,,drop=FALSE])
         output=as.matrix(loc.ord[[i]])
-        NNarray[[i]]=GpGp::find_ordered_nn(t(t(as.matrix(output))*scales),m)
+        NNarray[[i]]=find_ordered_nn(t(t(as.matrix(output))*scales),m)
       }
       
       ## starting and fixed parameters
@@ -165,7 +163,7 @@ fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu
       
       
       # get link functions
-      linkfuns <- GpGp::get_linkfun(covfun)
+      linkfuns <- get_linkfun(covfun)
       link <- linkfuns$link
       dlink <- linkfuns$dlink
       invlink <- linkfuns$invlink
@@ -184,8 +182,8 @@ fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu
       ddpen=list()
       
       for (i in 1:T){
-        NNlist[[i]] <- GpGp::group_obs((NNarray[[i]][,1:(m+1)]))
-        penalty[[i]] <- GpGp::get_penalty(Y.ord[[i]],X.ord[[i]],loc.ord[[i]],covfun) # this function takes in y as a vector, returns a list of three functions, # NEED CHANGE
+        NNlist[[i]] <- group_obs((NNarray[[i]][,1:(m+1)]))
+        penalty[[i]] <- get_penalty(Y.ord[[i]],X.ord[[i]],loc.ord[[i]],covfun) # this function takes in y as a vector, returns a list of three functions, # NEED CHANGE
         pen[[i]] <- penalty[[i]]$pen
         dpen[[i]] <- penalty[[i]]$dpen
         ddpen[[i]] <- penalty[[i]]$ddpen
@@ -206,9 +204,9 @@ fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu
         for (i in 1:T){
           
           if(grouped){
-            likobj <-  GpGp::vecchia_grouped_profbeta_loglik_grad_info(link(lp),covfun,y=as.matrix(Y.ord[[i]]),X=as.matrix(X.ord[[i]]),locs=as.matrix(loc.ord[[i]]),(NNlist[[i]]))
+            likobj <-  vecchia_grouped_profbeta_loglik_grad_info(link(lp),covfun,y=as.matrix(Y.ord[[i]]),X=as.matrix(X.ord[[i]]),locs=as.matrix(loc.ord[[i]]),(NNlist[[i]]))
           }else{
-            likobj <-  GpGp::vecchia_profbeta_loglik_grad_info(link(lp),covfun,y=as.matrix(Y.ord[[i]]),X=as.matrix(X.ord[[i]]),locs=as.matrix(loc.ord[[i]]),(NNarray[[i]]))
+            likobj <-  vecchia_grouped_profbeta_loglik_grad_info(link(lp),covfun,y=as.matrix(Y.ord[[i]]),X=as.matrix(X.ord[[i]]),locs=as.matrix(loc.ord[[i]]),(NNlist[[i]]))
             
           }
           likobj$loglik <- -likobj$loglik - pen[[i]](link(lp))
@@ -233,7 +231,7 @@ fit_scaled_thinned <- function(y,inputs,thinnedBins,T,ms=c(10),trend='zero',X,nu
       }
       
       
-      fit <- GpGp::fisher_scoring( likfun,invlink(start_parms)[active],
+      fit <- fisher_scoring( likfun,invlink(start_parms)[active],
                                    link,silent=TRUE, convtol = tol, max_iter = maxit ) 
       invlink_startparms[active] <- fit$logparms
       #start_parms[active] <- fit$covparms
@@ -423,8 +421,8 @@ predictions_scaled_thinned <- function(fit,locs_pred,m=400,joint=TRUE,nsims=0,
 #######   obs.pred maxmin ordering   ########
 order_maxmin_pred<-function(locs, locs_pred,refine=FALSE){
   
-  ord<-1:nrow(locs) #GPvecchia::order_maxmin_exact(locs)
-  ord_pred <-GPvecchia::order_maxmin_exact(locs_pred)
+  ord<-1:nrow(locs) #order_maxmin_exact(locs)
+  ord_pred <-order_maxmin_exact(locs_pred)
   
   if(refine){
     
@@ -494,10 +492,10 @@ find_ordered_nn_pred <- function(locs,m,fix.first=0,searchmult=2){
   # to the first mult*m+1 by brute force
   maxval <- min( mult*m + 1, n )
   if(fix.first<=maxval){
-    NNarray[1:maxval,] <- GpGp::find_ordered_nn_brute(locs[1:maxval,,drop=FALSE],m)
+    NNarray[1:maxval,] <- find_ordered_nn_brute(locs[1:maxval,,drop=FALSE],m)
   } else {
     maxval=fix.first
-    NNarray[1:(m+1),] <- GpGp::find_ordered_nn_brute(locs[1:(m+1),,drop=FALSE],m)
+    NNarray[1:(m+1),] <- find_ordered_nn_brute(locs[1:(m+1),,drop=FALSE],m)
     NNarray[1:maxval,1]=1:maxval
     NNarray[(m+1):maxval,1+(1:m)]=matrix(rep(1:m,maxval-m),byrow=TRUE,ncol=m)
   }
@@ -523,4 +521,8 @@ find_ordered_nn_pred <- function(locs,m,fix.first=0,searchmult=2){
   }
   
   return(NNarray)
+}
+order_maxmin_exact<-function(locs){
+  ord<-MaxMincpp(locs)
+  return(ord)
 }
